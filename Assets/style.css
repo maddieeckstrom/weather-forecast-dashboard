@@ -6,7 +6,7 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.header-bar div {
+.heading-image {
     background: url("./images/cloud-image-2.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
@@ -21,7 +21,18 @@
     width: 100px;
     margin-top: 56px;
     padding: 12px;
+    text-align: center;
+    font-weight: bold;
     /*border: rgb(0, 81, 255);*/
+}
+
+button {
+    background-color: rgb(252, 252, 174);
+    display: block;
+}
+
+button:hover {
+    font-weight: bold;
 }
 
 @media (max-width: 530px) {
@@ -30,13 +41,15 @@
         margin-top: 10px;
     }
 
-    .header-bar div {
+    .heading-image {
         margin-top: 10px;
     }
 
     .header-bar input {
         width: 80px;
         margin-top: 50px;
+        padding: 8px;
+        font-weight: lighter;
     }
 }
 
