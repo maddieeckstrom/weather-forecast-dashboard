@@ -6,16 +6,40 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+.header-bar div {
+    background: url("./images/cloud-image-2.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
 .header-bar h1 {
     color: rgb(3, 41, 121);
-    background: url("./images/cloud-image.jpg");
-    background-position: center;
-    background-size: 200%;
+    padding: 35px 0px 20px 4px;
 }
 
 .header-bar input {
     width: 100px;
-    margin-top: 22px;
+    margin-top: 56px;
     padding: 12px;
     /*border: rgb(0, 81, 255);*/
 }
+
+@media (max-width: 530px) {
+    .header-bar h1 {
+        font-size:150%;
+        margin-top: 10px;
+    }
+
+    .header-bar div {
+        margin-top: 10px;
+    }
+
+    .header-bar input {
+        width: 80px;
+        margin-top: 50px;
+    }
+}
+
+/* @media (max-width: 320px) {
+
+} */
