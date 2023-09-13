@@ -13,10 +13,10 @@ submitBtn.addEventListener('click', function(event) {
 
         function displayCurrent(data) {
 
-            let currentWeatherBox = document.getElementById("current-weather-box").value;
+            let currentWeatherBox = document.getElementById("current-box").value;
 
-            //need icon representation of cloud or sun (child 1 data 0)
-            //need temperature(child 6, feels like is data 0, current temp is data 3), humidity(child 6, data 1), and wind speed(child 12, data 1)
+            //need icon representation of cloud or sun (child 1(or data.clouds) data 0)
+            //need temperature(child 6(or data.main), feels like is data 0, current temp is data 3), humidity(child 6(or data.main), data 1), and wind speed(child 12(or data.wind), data 1)
         }
         
 

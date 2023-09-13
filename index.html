@@ -38,8 +38,11 @@
                 document.getElementById("current_date").innerHTML = new Date().toLocaleDateString('en-US', options);
             </script>
         </h3>
-        <div id="current-weather-box">
-
+        <div id="current-box" class="current-weather-box">
+            <div id="current-cloud-sun" class="current-cloudy-sunny"></div>
+            <div id="current-temp" class="current-temperature"></div>
+            <div id="current-humid" class="current-humidity"></div>
+            <div id="current-wind" class="current-wind-speed"></div>
         </div>
         <!--add current weather forecast here with two background themes, depending on if it's raining or sunny-->
     </div>
