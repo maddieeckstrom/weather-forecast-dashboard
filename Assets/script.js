@@ -7,31 +7,44 @@ submitBtn.addEventListener('click', function(event) {
     //console.log(city);
     localStorage.setItem("storeCity", city);
 
+    const cityStorage = document.getElementById("dropdown-content");
+    let cityList = document.createElement("li");
+    cityList.textContent = localStorage.getItem("storeCity");
+    cityStorage.appendChild(cityList);
+
+
     const APIKey = "3849ccbbe5a892256073c223a4de1590";
     let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
-    function getCurrentWeather () {
 
-        function displayCurrent(data) {
-
-            let currentWeatherBox = document.getElementById("current-box").value;
-
-            //need icon representation of cloud or sun (child 1(or data.clouds) data 0)
-            //need temperature(child 6(or data.main), feels like is data 0, current temp is data 3), humidity(child 6(or data.main), data 1), and wind speed(child 12(or data.wind), data 1)
-        }
-        
-
+    function getCurrentWeather () {  
         fetch(queryURL)
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
                 console.log(data);
-                //displayCurrent(data);
+
             })
         
             .catch(function(error) {
                 console.log(error);
             });
+
+            function displayCurrent(data) {
+                let currentCloud = data.clouds[0];
+                console.log(currentCloud);
+
+                let currentTemp = data.main[3];
+                let currentHum = data.main[1];
+                let currentWind = data.wind[1];
+
+                const currentCloudDiv = document.getElementById("current-cloud");
+                const currentTempDiv = document.getElementById("current-temp");
+                const currentHumidDiv = document.getElementById("current-humid");
+                const currentWindDiv = document.getElementById("current-wind");
+            }
+
+            displayCurrent(data);
 
         }
 

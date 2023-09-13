@@ -19,10 +19,8 @@
                     <button class="submitbtn" id="submitbtn" type="submit">Submit</button>
                     <div class="dropdown">
                         <button class="historybtn">History</button>
-                        <div class="dropdown-content">
-                            <a href="#">City 1</a>
-                            <a href="#">City 2</a>
-                            <a href="#">City 3</a>
+                        <div class="dropdown-content" id="dropdown-content">
+                            <ul></ul>
                         </div>
                     </div>
 
@@ -38,8 +36,8 @@
                 document.getElementById("current_date").innerHTML = new Date().toLocaleDateString('en-US', options);
             </script>
         </h3>
-        <div id="current-box" class="current-weather-box">
-            <div id="current-cloud-sun" class="current-cloudy-sunny"></div>
+        <div class="current-weather-box">
+            <div id="current-cloud" class="current-cloudy"></div>
             <div id="current-temp" class="current-temperature"></div>
             <div id="current-humid" class="current-humidity"></div>
             <div id="current-wind" class="current-wind-speed"></div>
