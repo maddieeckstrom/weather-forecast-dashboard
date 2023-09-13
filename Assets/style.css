@@ -70,6 +70,52 @@ button {
     margin-right: 28px;
   }
 
+  .current-weather {
+    display: flex;
+    margin: 50px;
+    padding-bottom: 200px;
+    border: 2px solid black;
+    border-radius: 30px;
+  }
+
+  .future-weather {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 50px;
+  }
+
+  .day-1 {
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 50px;
+  }
+
+  .day-2 {
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 50px;
+  }
+
+  .day-3 {
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 50px;
+  }
+
+  .day-4 {
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 50px;
+  }
+
+  .day-5 {
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 50px;
+  }
+
 @media (max-width: 530px) {
     .header-bar h1 {
         font-size:150%;
