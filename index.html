@@ -29,7 +29,7 @@
         </form>
     </header>
 
-    <div class="current-weather">
+    <div id="current-weather" class="current-weather">
         <div class="current-heading">
             <h3 id="current_date">
                 <script>
@@ -37,7 +37,6 @@
                     document.getElementById("current_date").innerHTML = new Date().toLocaleDateString('en-US', options);
                 </script>
             </h3>
-            <!-- add cloud or sun icon in heading bar through javascript -->
         </div>
         <div class="current-weather-box">
             <div id="current-cloud" class="current-cloudy"></div>
@@ -45,24 +44,28 @@
             <div id="current-humid" class="current-humidity"></div>
             <div id="current-wind" class="current-wind-speed"></div>
         </div>
-        <!--add current weather forecast here with two background themes, depending on if it's raining or sunny-->
     </div>
 
     <div class="future-weather">
-        <div class="day-1" id="day-1">
+        <div class="day-1">
             <h3>Day 1</h3>
+            <div id="day-1" class="dayOneData"></div>
         </div>
-        <div class="day-2" id="day-2">
+        <div class="day-2">
             <h3>Day 2</h3>
+            <div id="day-2"></div>
         </div>
-        <div class="day-3" id="day-3">
+        <div class="day-3">
             <h3>Day 3</h3>
+            <div id="day-3"></div>
         </div>
-        <div class="day-4" id="day-4">
+        <div class="day-4">
             <h3>Day 4</h3>
+            <div id="day-4"></div>
         </div>
-        <div class="day-5" id="day-5">
+        <div class="day-5">
             <h3>Day 5</h3>
+            <div id="day-5"></div>
         </div>
     </div>
 
