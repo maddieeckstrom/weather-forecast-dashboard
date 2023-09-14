@@ -22,6 +22,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: url(./images/sun.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .header-bar input {
@@ -118,7 +121,7 @@ button {
   .future-weather {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin: 50px;
   }

@@ -19,15 +19,31 @@ submitBtn.addEventListener('click', function(event) {
     })
 
     const APIKey = "3849ccbbe5a892256073c223a4de1590";
-    let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    let currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
     function getCurrentWeather () {  
-        fetch(queryURL)
+        fetch(currentQueryURL)
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
                 console.log(data);
+
+                function displayCurrent() {
+                    let currentCloud = data.children[1].children[0];
+                    console.log(data);
+    
+                    let currentTemp = data.main[3];
+                    let currentHum = data.main[1];
+                    let currentWind = data.wind[1];
+    
+                    const currentCloudDiv = document.getElementById("current-cloud");
+                    const currentTempDiv = document.getElementById("current-temp");
+                    const currentHumidDiv = document.getElementById("current-humid");
+                    const currentWindDiv = document.getElementById("current-wind");
+                }
+
+                displayCurrent();
 
             })
         
@@ -35,25 +51,33 @@ submitBtn.addEventListener('click', function(event) {
                 console.log(error);
             });
 
-            function displayCurrent(data) {
-                let currentCloud = data.clouds[0];
-                console.log(currentCloud);
-
-                let currentTemp = data.main[3];
-                let currentHum = data.main[1];
-                let currentWind = data.wind[1];
-
-                const currentCloudDiv = document.getElementById("current-cloud");
-                const currentTempDiv = document.getElementById("current-temp");
-                const currentHumidDiv = document.getElementById("current-humid");
-                const currentWindDiv = document.getElementById("current-wind");
-            }
-
-            displayCurrent(data);
-
         }
 
-    getCurrentWeather();
+    //start of fetching future weather forecast
+    let futureQueryURL = "api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey;
 
-    
+    function getFutureWeather () {
+        fetch(futureQueryURL)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+            })
+        
+            .catch(function(error) {
+                console.log(error);
+            });
+
+            function displayFuture(data) {
+
+            }
+
+    }
+
+    //calling the functions here
+    getCurrentWeather();
+    //getFutureWeather();
 })
+
+
