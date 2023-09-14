@@ -30,6 +30,7 @@
     padding: 12px;
     text-align: center;
     font-weight: bold;
+    background-color: rgb(254, 254, 234);
 }
 
 .button-column {
@@ -62,6 +63,7 @@ button {
     padding: 5px 10px 5px;
     text-decoration: none;
     display: block;
+    text-align: right;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
 
@@ -70,6 +72,32 @@ button {
     margin-right: 28px;
   }
 
+  /* for cloudy weather */
+  /* .current-weather-cloud {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    padding-bottom: 200px;
+    color: rgb(3, 41, 121);
+    background-color: rgb(239, 242, 251);
+    border: 2px solid rgb(3, 41, 121);
+    border-radius: 30px;
+    text-align: center;
+  } */
+
+  /* for sunny weather */
+  /* .current-weather-sun {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    padding-bottom: 200px;
+    color: rgb(250, 223, 20);
+    background-color: rgb(254, 254, 234);
+    border: 2px solid rgb(250, 223, 20);
+    border-radius: 30px;
+    text-align: center;
+  } */
+
   .current-weather {
     display: flex;
     flex-direction: column;
@@ -77,6 +105,7 @@ button {
     padding-bottom: 200px;
     border: 2px solid black;
     border-radius: 30px;
+    text-align: center;
   }
 
   .current-weather-box {

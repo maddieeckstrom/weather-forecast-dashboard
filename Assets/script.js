@@ -1,5 +1,4 @@
 const submitBtn = document.getElementById("submitbtn");
-
 submitBtn.addEventListener('click', function(event) {
     event.preventDefault();
 
@@ -7,11 +6,17 @@ submitBtn.addEventListener('click', function(event) {
     //console.log(city);
     localStorage.setItem("storeCity", city);
 
-    const cityStorage = document.getElementById("dropdown-content");
-    let cityList = document.createElement("li");
-    cityList.textContent = localStorage.getItem("storeCity");
-    cityStorage.appendChild(cityList);
+    const historybtn = document.getElementById("history");
+    historybtn.addEventListener('mouseover', function(event) {
 
+        event.preventDefault();
+
+        const cityStorage = document.getElementById("dropdown-content");
+        let cityList = document.createElement("li");
+        cityList.textContent = localStorage.getItem("storeCity");
+        cityStorage.appendChild(cityList);
+
+    })
 
     const APIKey = "3849ccbbe5a892256073c223a4de1590";
     let queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;

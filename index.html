@@ -18,7 +18,7 @@
                 <div class="button-column">
                     <button class="submitbtn" id="submitbtn" type="submit">Submit</button>
                     <div class="dropdown">
-                        <button class="historybtn">History</button>
+                        <button id="history" class="historybtn">History</button>
                         <div class="dropdown-content" id="dropdown-content">
                             <ul></ul>
                         </div>
@@ -30,12 +30,15 @@
     </header>
 
     <div class="current-weather">
-        <h3 id="current_date">
-            <script>
-                const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-                document.getElementById("current_date").innerHTML = new Date().toLocaleDateString('en-US', options);
-            </script>
-        </h3>
+        <div class="current-heading">
+            <h3 id="current_date">
+                <script>
+                    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+                    document.getElementById("current_date").innerHTML = new Date().toLocaleDateString('en-US', options);
+                </script>
+            </h3>
+            <!-- add cloud or sun icon in heading bar through javascript -->
+        </div>
         <div class="current-weather-box">
             <div id="current-cloud" class="current-cloudy"></div>
             <div id="current-temp" class="current-temperature"></div>
