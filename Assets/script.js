@@ -29,21 +29,25 @@ submitBtn.addEventListener('click', function(event) {
             .then(function (data) {
                 console.log(data);
 
-                function displayCurrent() {
-                    let currentCloud = data.children[1].children[0];
-                    console.log(data);
-    
-                    let currentTemp = data.main[3];
-                    let currentHum = data.main[1];
-                    let currentWind = data.wind[1];
+                function displayCurrent(data) {
+                    let currentCloud = data.clouds.all;
+                    //console.log(currentCloud);
+                    let currentTemp = data.main.temp;
+                    let currentHum = data.main.humidity;
+                    let currentWind = data.wind.speed;
     
                     const currentCloudDiv = document.getElementById("current-cloud");
                     const currentTempDiv = document.getElementById("current-temp");
                     const currentHumidDiv = document.getElementById("current-humid");
                     const currentWindDiv = document.getElementById("current-wind");
+
+                    currentCloudDiv.textContent = "Today's cloud coverage: " + currentCloud;
+                    currentTempDiv.textContent = "Today's temperature: " + currentTemp;
+                    currentHumidDiv.textContent = "Today's humidity: " + currentHum;
+                    currentWindDiv.textContent = "Today's wind speed: " + currentWind;
                 }
 
-                displayCurrent();
+                displayCurrent(data);
 
             })
         
@@ -62,7 +66,15 @@ submitBtn.addEventListener('click', function(event) {
                 return response.json();
             })
             .then(function (data) {
-                console.log(data);
+                //console.log(data);
+
+                function displayFutureData() {
+                    const dayOneDiv = document.getElementById("day-1");
+                    const dayTwoDiv = document.getElementById("day-2");
+                    const dayThreeDiv = document.getElementById("day-3");
+                    const dayFourDiv = document.getElementById("day-4");
+                    const dayDiveDiv = document.getElementById("day-5");
+                }
             })
         
             .catch(function(error) {
