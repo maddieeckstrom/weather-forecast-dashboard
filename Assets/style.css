@@ -118,7 +118,7 @@ button {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: large;
     flex-wrap: wrap;
-    padding: 50px;
+    padding: 25px;
   }
 
   .current-cloudy {
@@ -139,46 +139,57 @@ button {
 
   .future-weather {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
     text-align: center;
-    margin: 50px;
+  }
+
+  .five-days {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+    margin: 0px 50px 0px 50px;
   }
 
   .day-1 {
     border: 2px solid black;
     border-radius: 30px;
     padding: 10px;
-  }
-
-  .dayOneData {
-    display: flex;
-    flex-direction: column;
+    min-width: 100px;
+    min-height: 100px;
   }
 
   .day-2 {
     border: 2px solid black;
     border-radius: 30px;
     padding: 10px;
+    min-width: 100px;
+    min-height: 100px;
   }
 
   .day-3 {
     border: 2px solid black;
     border-radius: 30px;
     padding: 10px;
+    min-width: 100px;
+    min-height: 100px;
   }
 
   .day-4 {
     border: 2px solid black;
     border-radius: 30px;
     padding: 10px;
+    min-width: 100px;
+    min-height: 100px;
   }
 
   .day-5 {
     border: 2px solid black;
     border-radius: 30px;
     padding: 10px;
+    min-width: 100px;
+    min-height: 100px;
   }
 
 @media (max-width: 530px) {
@@ -205,4 +216,3 @@ button {
 /* @media (max-width: 320px) {
 
 } */
-
