@@ -26,7 +26,7 @@ submitBtn.addEventListener('click', function(event) {
                     iconImage.src = iconURL;
 
                     const currentHeader = document.getElementById("current_date");
-                    currentHeader.append("," + city);
+                    currentHeader.append(", " + city);
                     
                     const currentCloudDiv = document.getElementById("current-cloud");
                     const currentTempDiv = document.getElementById("current-temp");
@@ -37,9 +37,9 @@ submitBtn.addEventListener('click', function(event) {
                     //console.log(currentCloud);
 
                     const currentWeather = document.getElementById("current-weather");
-                    if (currentCloud <40) {
+                    if (currentCloud < 40) {
                         currentWeather.classList.replace("current-weather", "current-weather-sun");
-                    } else if (currentCloud >60) {
+                    } else if (currentCloud > 60) {
                         currentWeather.classList.replace("current-weather", "current-weather-cloud");
                     } else {
                     }
@@ -166,9 +166,11 @@ const historybtn = document.getElementById("history");
         const history = JSON.parse(localStorage.getItem("storeCity"));
 
         for (let i = 0; i < history.length; i++) {
-            let cityItem = document.createElement("li");
+            let cityItem = document.createElement("option");
             cityItem.textContent = history[i];
             cityStorage.appendChild(cityItem);
         }
+
+        document.getElementById("cityInput").value = cityStorage.options[cityStorage.selectedIndex].text;
 
     })

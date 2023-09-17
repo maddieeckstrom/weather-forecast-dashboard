@@ -94,9 +94,9 @@ button {
     flex-direction: column;
     margin: 50px;
     padding: 50px;
-    color: rgb(250, 223, 20);
+    color: rgb(250, 173, 20);
     background-color: rgb(254, 254, 234);
-    border: 2px solid rgb(250, 223, 20);
+    border: 2px solid rgb(250, 173, 20);
     border-radius: 30px;
     text-align: center;
   }
