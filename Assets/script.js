@@ -9,7 +9,11 @@ submitBtn.addEventListener('click', function(event) {
     const APIKey = "3849ccbbe5a892256073c223a4de1590";
     let currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=metric";
 
-    function getCurrentWeather () {  
+    function getCurrentWeather (savedCity) {  
+        if (savedCity) {
+            city = clickedCity;
+        }
+        
         fetch(currentQueryURL)
             .then(function (response) {
                 return response.json();
@@ -166,11 +170,19 @@ const historybtn = document.getElementById("history");
         const history = JSON.parse(localStorage.getItem("storeCity"));
 
         for (let i = 0; i < history.length; i++) {
-            let cityItem = document.createElement("option");
+            let cityItem = document.createElement("button");
             cityItem.textContent = history[i];
+
+            cityItem.addEventListener('click', function(savedCity) {
+                savedCity.preventDefault();
+                //console.log('hello');
+                let clickedCity = cityItem.textContent;
+            })
+
             cityStorage.appendChild(cityItem);
         }
-
-        document.getElementById("cityInput").value = cityStorage.options[cityStorage.selectedIndex].text;
-
     })
+
+    //function inside the for loop, so that when I click on the button, target the cityitem, add event listenere beore line 175 (where I append it)
+    // play around with how do I feed in cityitem.textContent into my text funcitons?
+    //getCurrentWeather(cityItem.textContent), should be feeded in as an argument

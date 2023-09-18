@@ -61,12 +61,13 @@ button {
     z-index: 1;
   }
 
-  .dropdown-content li {
+  .dropdown-content button {
     color: black;
     padding: 5px 10px 5px;
     text-decoration: none;
     display: block;
     text-align: right;
+    border: none;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
 
