@@ -183,6 +183,3 @@ const historybtn = document.getElementById("history");
         }
     })
 
-    //function inside the for loop, so that when I click on the button, target the cityitem, add event listenere beore line 175 (where I append it)
-    // play around with how do I feed in cityitem.textContent into my text funcitons?
-    //getCurrentWeather(cityItem.textContent), should be feeded in as an argument
