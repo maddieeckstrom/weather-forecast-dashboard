@@ -73,12 +73,12 @@ function getCurrentWeather(city) {
                 currentWindDiv.textContent = "Today's wind speed: " + currentWind + " m/s";
             }
 
-            //calling the function to display the current weather box
-            displayCurrent(data);
+        //calling the function to display the current weather box
+        displayCurrent(data);
 
         })
         
-        //cathing any errors from the fetch and console logging them
+        //cathing any errors from the fetch of current weather data and console logging them
         .catch(function(error) {
             console.log(error);
         });
@@ -88,86 +88,103 @@ function getCurrentWeather(city) {
 //start of fetching future weather forecast
 function getFutureWeather(city) {
 
+    //variables for API key and the city for the future weather
     let cityTwo = document.getElementById("cityInput").value;
     const APIKey = "3849ccbbe5a892256073c223a4de1590";
 
-    let futureQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityTwo + "&appid=" + APIKey + "&units=metric";
+    let futureQueryURL
 
-        fetch(futureQueryURL)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(data);
-
-                function displayFuture(data) {
-                    const dayOneDiv = document.getElementById("day-1");
-                    const dayTwoDiv = document.getElementById("day-2");
-                    const dayThreeDiv = document.getElementById("day-3");
-                    const dayFourDiv = document.getElementById("day-4");
-                    const dayFiveDiv = document.getElementById("day-5");
-
-                    let futureCloudOne = data.list[1].clouds.all;
-                    //console.log(futureCloudOne);
-                    let futureTempOne = data.list[1].main.temp;
-                    let futureHumOne = data.list[1].main.humidity;
-                    let futureWindOne = data.list[1].wind.speed;
-
-                    let futureCloudTwo = data.list[2].clouds.all;
-                    let futureTempTwo = data.list[2].main.temp;
-                    let futureHumTwo = data.list[2].main.humidity;
-                    let futureWindTwo = data.list[2].wind.speed;
-
-                    let futureCloudThree = data.list[3].clouds.all;
-                    let futureTempThree = data.list[3].main.temp;
-                    let futureHumThree = data.list[3].main.humidity;
-                    let futureWindThree = data.list[3].wind.speed;
-
-                    let futureCloudFour = data.list[4].clouds.all;
-                    let futureTempFour = data.list[4].main.temp;
-                    let futureHumFour = data.list[4].main.humidity;
-                    let futureWindFour = data.list[4].wind.speed;
-
-                    let futureCloudFive = data.list[5].clouds.all;
-                    let futureTempFive = data.list[5].main.temp;
-                    let futureHumFive = data.list[5].main.humidity;
-                    let futureWindFive = data.list[5].wind.speed;
-
-                    dayOneDiv.children[0].textContent = "Cloud: " + futureCloudOne + "%";
-                    dayOneDiv.children[1].textContent = "Temp: " + futureTempOne + " °C";
-                    dayOneDiv.children[2].textContent = "Hum: " + futureHumOne + "%";
-                    dayOneDiv.children[3].textContent = "Wind: " + futureWindOne + " m/s";
-
-                    dayTwoDiv.children[0].textContent = "Cloud: " + futureCloudTwo + "%";
-                    dayTwoDiv.children[1].textContent = "Temp: " + futureTempTwo + " °C";
-                    dayTwoDiv.children[2].textContent = "Hum: " + futureHumTwo + "%";
-                    dayTwoDiv.children[3].textContent = "Wind: " + futureWindTwo + " m/s";
-
-                    dayThreeDiv.children[0].textContent = "Cloud: " + futureCloudThree + "%";
-                    dayThreeDiv.children[1].textContent = "Temp: " + futureTempThree + " °C";
-                    dayThreeDiv.children[2].textContent = "Hum: " + futureHumThree + "%";
-                    dayThreeDiv.children[3].textContent = "Wind: " + futureWindThree + " m/s";
-
-                    dayFourDiv.children[0].textContent = "Cloud: " + futureCloudFour + "%";
-                    dayFourDiv.children[1].textContent = "Temp: " + futureTempFour + " °C";
-                    dayFourDiv.children[2].textContent = "Hum: " + futureHumFour + "%";
-                    dayFourDiv.children[3].textContent = "Wind: " + futureWindFour + " m/s";
-
-                    dayFiveDiv.children[0].textContent = "Cloud: " + futureCloudFive + "%";
-                    dayFiveDiv.children[1].textContent = "Temp: " + futureTempFive + " °C";
-                    dayFiveDiv.children[2].textContent = "Hum: " + futureHumFive + "%";
-                    dayFiveDiv.children[3].textContent = "Wind: " + futureWindFive + " m/s";
-                }
-
-            displayFuture(data);
-
-            })
-        
-            .catch(function(error) {
-                console.log(error);
-            });
-
+    //if a city previously submitted was clicked on, fetch the data for that city, if not, fetch the data from the city in the submit box
+    if (city) {
+        futureQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=metric";
+    } else {
+        futureQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityTwo + "&appid=" + APIKey + "&units=metric";
     }
+
+    //fetching the data for the future weather and the city the user has selected
+    fetch(futureQueryURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+
+            function displayFuture(data) {
+
+                //getting element by ID for each day in the future weather box
+                const dayOneDiv = document.getElementById("day-1");
+                const dayTwoDiv = document.getElementById("day-2");
+                const dayThreeDiv = document.getElementById("day-3");
+                const dayFourDiv = document.getElementById("day-4");
+                const dayFiveDiv = document.getElementById("day-5");
+
+                //collecting the data for each data point in day 1 of the forecast and setting that data to variables
+                let futureCloudOne = data.list[1].clouds.all;
+                //console.log(futureCloudOne);
+                let futureTempOne = data.list[1].main.temp;
+                let futureHumOne = data.list[1].main.humidity;
+                let futureWindOne = data.list[1].wind.speed;
+
+                //collecting the data for each data point in day 2 of the forecast and setting the data to variables
+                let futureCloudTwo = data.list[2].clouds.all;
+                let futureTempTwo = data.list[2].main.temp;
+                let futureHumTwo = data.list[2].main.humidity;
+                let futureWindTwo = data.list[2].wind.speed;
+
+                let futureCloudThree = data.list[3].clouds.all;
+                let futureTempThree = data.list[3].main.temp;
+                let futureHumThree = data.list[3].main.humidity;
+                let futureWindThree = data.list[3].wind.speed;
+
+                let futureCloudFour = data.list[4].clouds.all;
+                let futureTempFour = data.list[4].main.temp;
+                let futureHumFour = data.list[4].main.humidity;
+                let futureWindFour = data.list[4].wind.speed;
+
+                let futureCloudFive = data.list[5].clouds.all;
+                let futureTempFive = data.list[5].main.temp;
+                let futureHumFive = data.list[5].main.humidity;
+                let futureWindFive = data.list[5].wind.speed;
+
+                //adding our variables of day 1 future weather data points to their designated box in future weather box
+                dayOneDiv.children[0].textContent = "Cloud: " + futureCloudOne + "%";
+                dayOneDiv.children[1].textContent = "Temp: " + futureTempOne + " °C";
+                dayOneDiv.children[2].textContent = "Hum: " + futureHumOne + "%";
+                dayOneDiv.children[3].textContent = "Wind: " + futureWindOne + " m/s";
+
+                //adding our variables of day 2 future weather data points to their designated box in future weather box
+                dayTwoDiv.children[0].textContent = "Cloud: " + futureCloudTwo + "%";
+                dayTwoDiv.children[1].textContent = "Temp: " + futureTempTwo + " °C";
+                dayTwoDiv.children[2].textContent = "Hum: " + futureHumTwo + "%";
+                dayTwoDiv.children[3].textContent = "Wind: " + futureWindTwo + " m/s";
+
+                dayThreeDiv.children[0].textContent = "Cloud: " + futureCloudThree + "%";
+                dayThreeDiv.children[1].textContent = "Temp: " + futureTempThree + " °C";
+                dayThreeDiv.children[2].textContent = "Hum: " + futureHumThree + "%";
+                dayThreeDiv.children[3].textContent = "Wind: " + futureWindThree + " m/s";
+
+                dayFourDiv.children[0].textContent = "Cloud: " + futureCloudFour + "%";
+                dayFourDiv.children[1].textContent = "Temp: " + futureTempFour + " °C";
+                dayFourDiv.children[2].textContent = "Hum: " + futureHumFour + "%";
+                dayFourDiv.children[3].textContent = "Wind: " + futureWindFour + " m/s";
+
+                dayFiveDiv.children[0].textContent = "Cloud: " + futureCloudFive + "%";
+                dayFiveDiv.children[1].textContent = "Temp: " + futureTempFive + " °C";
+                dayFiveDiv.children[2].textContent = "Hum: " + futureHumFive + "%";
+                dayFiveDiv.children[3].textContent = "Wind: " + futureWindFive + " m/s";
+            }
+
+        //calling the function to display the future weather data
+        displayFuture(data);
+
+        })
+        
+        //catching any errors from the fetch of future weather data and console logging them
+        .catch(function(error) {
+            console.log(error);
+        });
+
+}
 
 const submitBtn = document.getElementById("submitbtn");
 submitBtn.addEventListener('click', function(event) {
@@ -204,7 +221,7 @@ const historybtn = document.getElementById("history");
                 //console.log(clickedCity);
 
                 getCurrentWeather(clickedCity);
-                //getFutureWeather(clickedCity);
+                getFutureWeather(clickedCity);
             })
 
             cityStorage.appendChild(cityItem);
