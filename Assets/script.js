@@ -1,11 +1,14 @@
+//function to fetch and display the current weather data
 function getCurrentWeather(city) {
     //console.log(city);
     
+    //variables for API key and the city for the current weather 
     let cityOne = document.getElementById("cityInput").value;
     const APIKey = "3849ccbbe5a892256073c223a4de1590";
 
     let currentQueryURL
 
+    //if a city previously submitted was clicked on, fetch the data for that city, if not, fetch the data from the city in the submit box
     if (city) {
         currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=metric"
     } else {
@@ -14,65 +17,73 @@ function getCurrentWeather(city) {
 
     saveCity(cityOne);
 
-        fetch(currentQueryURL)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                console.log(data);
+    //fetching the data for the current weather and the city the user has selected
+    fetch(currentQueryURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
 
-                function displayCurrent(data) {
+            function displayCurrent(data) {
                     
-                    const iconImage = document.getElementById("icon");
-                    let currentIcon = data.weather[0].icon;
-                    //console.log(currentIcon);
-                    let iconURL = `https://openweathermap.org/img/w/${currentIcon}.png`
-                    iconImage.src = iconURL;
+                //will display the sun or cloud icon depending on current weather conditions
+                const iconImage = document.getElementById("icon");
+                let currentIcon = data.weather[0].icon;
+                //console.log(currentIcon);
+                let iconURL = `https://openweathermap.org/img/w/${currentIcon}.png`
+                iconImage.src = iconURL;
 
-                    const currentHeader = document.getElementById("current_date");
-                    if (city) {
-                        currentHeader.append(", " + city)
-                    } else {
-                        currentHeader.append(", " + cityOne);
-                    }
-
-                    //currentHeader.append(", " + cityOne);
-                    
-                    const currentCloudDiv = document.getElementById("current-cloud");
-                    const currentTempDiv = document.getElementById("current-temp");
-                    const currentHumidDiv = document.getElementById("current-humid");
-                    const currentWindDiv = document.getElementById("current-wind");
-                   
-                    let currentCloud = data.clouds.all;
-                    //console.log(currentCloud);
-
-                    const currentWeather = document.getElementById("current-weather");
-                    if (currentCloud < 40) {
-                        currentWeather.classList.replace("current-weather", "current-weather-sun");
-                    } else if (currentCloud > 60) {
-                        currentWeather.classList.replace("current-weather", "current-weather-cloud");
-                    } else {
-                    }
-
-                    let currentTemp = data.main.temp;
-                    let currentHum = data.main.humidity;
-                    let currentWind = data.wind.speed;
-
-                    currentCloudDiv.textContent = "Today's cloud coverage: " + currentCloud + "%";
-                    currentTempDiv.textContent = "Today's temperature: " + currentTemp + " °C";
-                    currentHumidDiv.textContent = "Today's humidity: " + currentHum + "%";
-                    currentWindDiv.textContent = "Today's wind speed: " + currentWind + " m/s";
+                //apending the city name to the header of the current weather box
+                const currentHeader = document.getElementById("current_date");
+                if (city) {
+                    currentHeader.append(", " + city)
+                } else {
+                    currentHeader.append(", " + cityOne);
                 }
 
-                displayCurrent(data);
+                //getting element by ID for each data point in the current weather box 
+                const currentCloudDiv = document.getElementById("current-cloud");
+                const currentTempDiv = document.getElementById("current-temp");
+                const currentHumidDiv = document.getElementById("current-humid");
+                const currentWindDiv = document.getElementById("current-wind");
+                   
+                //collecting the data for cloud coverage and setting it to a variable
+                let currentCloud = data.clouds.all;
+                //console.log(currentCloud);
 
-            })
+                //applies classes to current weather box based on current weather conditions
+                const currentWeather = document.getElementById("current-weather");
+                if (currentCloud < 40) {
+                    currentWeather.classList.replace("current-weather", "current-weather-sun");
+                } else if (currentCloud > 60) {
+                    currentWeather.classList.replace("current-weather", "current-weather-cloud");
+                } else {
+                }
+
+                //collecting the data for the rest of the curretn weather data points and setting it to a variable 
+                let currentTemp = data.main.temp;
+                let currentHum = data.main.humidity;
+                let currentWind = data.wind.speed;
+
+                //adding our variables of current weather data points to their designated box in current weather box
+                currentCloudDiv.textContent = "Today's cloud coverage: " + currentCloud + "%";
+                currentTempDiv.textContent = "Today's temperature: " + currentTemp + " °C";
+                currentHumidDiv.textContent = "Today's humidity: " + currentHum + "%";
+                currentWindDiv.textContent = "Today's wind speed: " + currentWind + " m/s";
+            }
+
+            //calling the function to display the current weather box
+            displayCurrent(data);
+
+        })
         
-            .catch(function(error) {
-                console.log(error);
-            });
+        //cathing any errors from the fetch and console logging them
+        .catch(function(error) {
+            console.log(error);
+        });
 
-        }
+    }
 
 //start of fetching future weather forecast
 function getFutureWeather(city) {
