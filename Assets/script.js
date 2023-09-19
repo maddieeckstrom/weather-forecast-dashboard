@@ -1,19 +1,19 @@
-const submitBtn = document.getElementById("submitbtn");
-submitBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-
-    let city = document.getElementById("cityInput").value;
-    saveCity(city);
-    //console/log(city);
-
+function getCurrentWeather(city) {
+    //console.log(city);
+    
+    let cityOne = document.getElementById("cityInput").value;
     const APIKey = "3849ccbbe5a892256073c223a4de1590";
-    let currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=metric";
 
-    function getCurrentWeather (savedCity) {  
-        if (savedCity) {
-            city = clickedCity;
-        }
-        
+    let currentQueryURL
+
+    if (city) {
+        currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=metric"
+    } else {
+        currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityOne + "&appid=" + APIKey + "&units=metric";
+    }
+
+    saveCity(cityOne);
+
         fetch(currentQueryURL)
             .then(function (response) {
                 return response.json();
@@ -30,7 +30,13 @@ submitBtn.addEventListener('click', function(event) {
                     iconImage.src = iconURL;
 
                     const currentHeader = document.getElementById("current_date");
-                    currentHeader.append(", " + city);
+                    if (city) {
+                        currentHeader.append(", " + city)
+                    } else {
+                        currentHeader.append(", " + cityOne);
+                    }
+
+                    //currentHeader.append(", " + cityOne);
                     
                     const currentCloudDiv = document.getElementById("current-cloud");
                     const currentTempDiv = document.getElementById("current-temp");
@@ -68,10 +74,14 @@ submitBtn.addEventListener('click', function(event) {
 
         }
 
-    //start of fetching future weather forecast
-    let futureQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=metric";
+//start of fetching future weather forecast
+function getFutureWeather(city) {
 
-    function getFutureWeather () {
+    let cityTwo = document.getElementById("cityInput").value;
+    const APIKey = "3849ccbbe5a892256073c223a4de1590";
+
+    let futureQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityTwo + "&appid=" + APIKey + "&units=metric";
+
         fetch(futureQueryURL)
             .then(function (response) {
                 return response.json();
@@ -148,6 +158,10 @@ submitBtn.addEventListener('click', function(event) {
 
     }
 
+const submitBtn = document.getElementById("submitbtn");
+submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    
     //calling the functions here
     getCurrentWeather();
     getFutureWeather();
@@ -173,13 +187,15 @@ const historybtn = document.getElementById("history");
             let cityItem = document.createElement("button");
             cityItem.textContent = history[i];
 
-            cityItem.addEventListener('click', function(savedCity) {
-                savedCity.preventDefault();
-                //console.log('hello');
+            cityItem.addEventListener('click', function(event) {
+                event.preventDefault();
                 let clickedCity = cityItem.textContent;
+                //console.log(clickedCity);
+
+                getCurrentWeather(clickedCity);
+                //getFutureWeather(clickedCity);
             })
 
             cityStorage.appendChild(cityItem);
         }
     })
-
