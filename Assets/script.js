@@ -186,44 +186,58 @@ function getFutureWeather(city) {
 
 }
 
+//targeting the submit button using get element by ID
 const submitBtn = document.getElementById("submitbtn");
+
+//the event listener for clicking the submit button in the html form
 submitBtn.addEventListener('click', function(event) {
     event.preventDefault();
     
-    //calling the functions here
+    //calling the current anf future weather functions here
     getCurrentWeather();
     getFutureWeather();
 })
 
+//function which adds any new city to local storage
 function saveCity(city) {
+    //if cities already exist in local storage, retrieve the string and parse them so we may push a new city
     const existingCities = JSON.parse(localStorage.getItem("storeCity")) || [];
     existingCities.push(city);
 
+    //stringify the cities again to save all of the data back to local storage
     localStorage.setItem("storeCity", JSON.stringify(existingCities));
-
 }
 
+//creating a variable for the history button using get element by ID
 const historybtn = document.getElementById("history");
+
+    //adding an event listener for the history button when a user's mouse runs over
     historybtn.addEventListener('mouseover', function(event) {
         event.preventDefault();
 
+        //creating a variable for the dropdown menu once a mouse goes over the history button
         const cityStorage = document.getElementById("dropdown-content");
         cityStorage.innerHTML = "";
+        //creating a variable which gets item from local storage and parses them
         const history = JSON.parse(localStorage.getItem("storeCity"));
 
+        //a for loop which runs through each item that was parsed in local storage and sets each data to a button created by JS
         for (let i = 0; i < history.length; i++) {
             let cityItem = document.createElement("button");
             cityItem.textContent = history[i];
 
+            //an event listener to click on a previously searched city in the dropdown menu
             cityItem.addEventListener('click', function(event) {
                 event.preventDefault();
                 let clickedCity = cityItem.textContent;
                 //console.log(clickedCity);
 
+                //calling these functions by clicking on our dropdown menu rather than the submit button
                 getCurrentWeather(clickedCity);
                 getFutureWeather(clickedCity);
             })
 
+            //appending the button created by JS to the dropdown menu
             cityStorage.appendChild(cityItem);
         }
     })
