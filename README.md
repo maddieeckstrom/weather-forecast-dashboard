@@ -2,64 +2,34 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+The application is a weather forecast dashboard. Once a city is typed into the search box and submitted using the submit button, the day-of weather conditions and the following 5-day forecast will show for the city the user selected. If a user would like the forecast for a city they have previously searched for, they may click on that city existing in a history dropdown menu.
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+This application was built to act as an easy-to-use weather forecast application with a simple user interface and no advertisements for user's wanting to access the weather forecast without being bombarded by pop-ups.
 
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
+In building this application I better learned how to fetch API data and collect whichever data strings from the fetched array was necessary to complete my application.
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+The application is a live site and is ready-to-use with no installation needed.
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+To search for a new city, type it in the search bar and hit the submit button, as shown in the screenshot:
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
+![screenshot one](./Assets/images/Screenshot-one.jpg)
 
-![alt text](assets/images/screenshot.png)
+
+To search for a city that has already been submitted, click on that city from the dropdown menu that exists when one scrolls over the history button, as shown in the screenshots:
+
+![screenshot two](./Assets/images/screenshot-two.png)
+
+
+Once a city has been either searched for or clicked on, the weather forecast will display, as shown in the following two screenshots:
+
+![screenshot three](./Assets/images/screenshot-three.png)
+![screenshot four](./Assets/images/screenshot-four.png)
+
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
-
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
-
-## License
-
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-
-Badges aren't necessary, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
-## Features
-
-If your project has a lot of features, list them here.
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+I used the following API: https://openweathermap.org/forecast5 
