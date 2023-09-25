@@ -223,6 +223,10 @@ const historybtn = document.getElementById("history");
 
         //a for loop which runs through each item that was parsed in local storage and sets each data to a button created by JS
         for (let i = 0; i < history.length; i++) {
+            if (history[i] === null) {
+                continue;
+            }
+
             let cityItem = document.createElement("button");
             cityItem.textContent = history[i];
 
