@@ -10,9 +10,9 @@ function getCurrentWeather(city) {
 
     //if a city previously submitted was clicked on, fetch the data for that city, if not, fetch the data from the city in the submit box
     if (city) {
-        currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=metric"
+        currentQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=metric"
     } else {
-        currentQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityOne + "&appid=" + APIKey + "&units=metric";
+        currentQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityOne + "&appid=" + APIKey + "&units=metric";
     }
 
     saveCity(cityOne);
