@@ -36,10 +36,20 @@ function getCurrentWeather(city) {
 
                 //apending the city name to the header of the current weather box
                 const currentHeader = document.getElementById("current_date");
+                const currentCityHead = document.getElementById("current_head_city");
+
+                currentCityHead.textContent = "";
+                
                 if (city) {
-                    currentHeader.append(", " + city)
+                    currentCityHead.append(city)
                 } else {
-                    currentHeader.append(", " + cityOne);
+                    currentCityHead.append(cityOne);
+                }
+
+                if (city) {
+                    currentHeader.append(currentCityHead)
+                } else {
+                    currentHeader.append(currentCityHead);
                 }
 
                 //getting element by ID for each data point in the current weather box 
@@ -56,9 +66,13 @@ function getCurrentWeather(city) {
                 const currentWeather = document.getElementById("current-weather");
                 if (currentCloud < 40) {
                     currentWeather.classList.replace("current-weather", "current-weather-sun");
+                    currentWeather.classList.replace("current-weather-cloud", "current-weather-sun");
                 } else if (currentCloud > 60) {
                     currentWeather.classList.replace("current-weather", "current-weather-cloud");
+                    currentWeather.classList.replace("current-weather-sun", "current-weather-cloud");
                 } else {
+                    currentWeather.classList.replace("current-weather-cloud", "current-weather");
+                    currentWeather.classList.replace("current-weather-sun", "current-weather");
                 }
 
                 //collecting the data for the rest of the curretn weather data points and setting it to a variable 
