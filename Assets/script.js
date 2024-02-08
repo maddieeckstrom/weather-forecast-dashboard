@@ -110,9 +110,9 @@ function getFutureWeather(city) {
 
     //if a city previously submitted was clicked on, fetch the data for that city, if not, fetch the data from the city in the submit box
     if (city) {
-        futureQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=metric";
+        futureQueryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=metric";
     } else {
-        futureQueryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityTwo + "&appid=" + APIKey + "&units=metric";
+        futureQueryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityTwo + "&appid=" + APIKey + "&units=metric";
     }
 
     //fetching the data for the future weather and the city the user has selected
