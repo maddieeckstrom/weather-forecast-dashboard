@@ -23,7 +23,7 @@ function getCurrentWeather(city) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            // console.log(data);
 
             function displayCurrent(data) {
                     
@@ -121,7 +121,7 @@ function getFutureWeather(city) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            // console.log(data);
 
             function displayFuture(data) {
 
