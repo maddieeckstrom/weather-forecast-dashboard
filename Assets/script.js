@@ -216,7 +216,13 @@ submitBtn.addEventListener('click', function(event) {
 function saveCity(city) {
     //if cities already exist in local storage, retrieve the string and parse them so we may push a new city
     const existingCities = JSON.parse(localStorage.getItem("storeCity")) || [];
-    existingCities.push(city);
+    // existingCities.push(city);
+
+    // check if the city already exists in local storage before pushing
+    if (!existingCities.includes(city)) {
+        existingCities.push(city);
+        localStorage.setItem("storeCity", JSON.stringify(existingCities));
+    }
 
     //stringify the cities again to save all of the data back to local storage
     localStorage.setItem("storeCity", JSON.stringify(existingCities));
