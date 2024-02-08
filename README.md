@@ -1,5 +1,7 @@
 # weather-forecast-dashboard
 
+https://maddieeckstrom.github.io/weather-forecast-dashboard/
+
 ## Description
 
 The application is a weather forecast dashboard. Once a city is typed into the search box and submitted using the submit button, the day-of weather conditions and the following 5-day forecast will show for the city the user selected. If a user would like the forecast for a city they have previously searched for, they may click on that city existing in a history dropdown menu.
